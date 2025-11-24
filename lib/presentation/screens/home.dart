@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/containerImageCarousel.dart';
+import '../widgets/rowTextIcon.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -103,66 +106,19 @@ class Home extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 250,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        final itemWidth =
-                            MediaQuery.sizeOf(context).width / 2.5;
-
-                        return SizedBox(
-                          width: itemWidth,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              right: 10,
-                            ), // espace propre entre les cartes
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Image + Placeholder
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: Container(
-                                    height: 220,
-                                    width: itemWidth,
-                                    color: Colors.grey.shade300,
-                                    child: const Placeholder(),
-                                  ),
-                                ),
-
-                                const SizedBox(
-                                  height: 8,
-                                ), // petit espace propre
-
-                                const Text(
-                                  "Titre du film",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                  ContainerImageCarousel(),
+                  SizedBox(height: 20),
+                  RowTextIcon(
+                    text: "Top 10 du moment",
+                    icon: Icons.arrow_forward_ios_sharp,
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Top 10 du moment"),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.arrow_forward_ios_sharp),
-                      ),
-                    ],
+                  ContainerImageCarousel(),
+                  RowTextIcon(
+                    text: "Top 10 du moment",
+                    icon: Icons.arrow_forward_ios_sharp,
                   ),
+                  ContainerImageCarousel(),
                 ],
               ),
             ),
