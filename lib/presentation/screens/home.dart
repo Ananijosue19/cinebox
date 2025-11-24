@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  final List<Widget> pages = [Accueil(), Profil(), Favorie(), Categorie()];
+  final List<Widget> pages = [Accueil(), Categorie(), Favorie(), Profil()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -34,12 +34,13 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.home_filled),
             label: "Accueil",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoris"),
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
             label: "Catégorie",
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoris"),
+
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.red,
