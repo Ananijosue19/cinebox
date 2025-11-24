@@ -23,14 +23,37 @@ class ContainerImageCarousel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Image + Placeholder
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      height: 220,
-                      width: itemWidth,
-                      color: Colors.grey.shade300,
-                      child: const Placeholder(),
-                    ),
+                  Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Container(
+                          height: 220,
+                          width: itemWidth,
+                          color: Colors.grey.shade300,
+                          child: const Placeholder(),
+                        ),
+                      ),
+                      Positioned(
+                        top: 2,
+                        right: 10,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          margin: const EdgeInsets.all(1),
+                          decoration: BoxDecoration(
+                            color: Colors.black38,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(Icons.star, color: Colors.yellow, size: 12),
+                              const SizedBox(width: 2),
+                              Text("4.5", style: TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
 
                   const SizedBox(height: 8), // petit espace propre
