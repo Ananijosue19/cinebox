@@ -31,7 +31,7 @@ class Accueil extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.heightOf(context) / 5),
+            SizedBox(height: 110),
             Stack(
               children: [
                 SizedBox(
