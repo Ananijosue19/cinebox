@@ -5,6 +5,22 @@ class Favorie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 10,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Favorie",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            ),
+            Text("Explorez par genre", style: TextStyle(fontSize: 12)),
+          ],
+        ),
+      ),
+      body: Center(),
+    );
   }
 }
