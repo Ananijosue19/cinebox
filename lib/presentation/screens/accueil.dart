@@ -316,21 +316,22 @@ class _AccueilState extends State<Accueil> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Badge "Nouvelle sortie"
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
+                    horizontal: 6,
+                    vertical: 2,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.red,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: const Text(
-                    "NOUVELLE SORTIE",
+                    "En vedette",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
@@ -338,63 +339,52 @@ class _AccueilState extends State<Accueil> {
                     ),
                   ),
                 ),
-
-                const SizedBox(height: 12),
-
                 // Titre du film
                 Text(
                   _latestMovie!.title,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                const SizedBox(height: 8),
-
                 // Note et date
-                Row(
-                  children: [
+                /**Row(
+                    children: [
                     const Icon(Icons.star, color: Colors.amber, size: 20),
                     const SizedBox(width: 4),
                     Text(
-                      _latestMovie!.voteAverage.toStringAsFixed(1),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    _latestMovie!.voteAverage.toStringAsFixed(1),
+                    style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    ),
                     ),
                     const SizedBox(width: 16),
                     const Icon(
-                      Icons.calendar_today,
-                      color: Colors.white70,
-                      size: 16,
+                    Icons.calendar_today,
+                    color: Colors.white70,
+                    size: 16,
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      _latestMovie!.releaseDate,
-                      style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
-                      ),
+                    _latestMovie!.releaseDate,
+                    style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 14,
                     ),
-                  ],
-                ),
-
-                const SizedBox(height: 12),
-
+                    ),
+                    ],
+                    ),
+                 */
                 // Description
                 Text(
                   _latestMovie!.overview ?? 'Pas de description disponible',
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: Colors.white70, fontSize: 14),
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                 ),
-
-                const SizedBox(height: 16),
-
                 // Bouton "Voir les détails"
                 SizedBox(
                   width: double.infinity,
@@ -404,19 +394,15 @@ class _AccueilState extends State<Accueil> {
                       print('Voir les détails de ${_latestMovie!.title}');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     child: const Text(
                       'Voir les détails',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TextStyle(fontSize: 16),
                     ),
                   ),
                 ),
