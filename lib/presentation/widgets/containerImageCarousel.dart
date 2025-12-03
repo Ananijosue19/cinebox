@@ -41,16 +41,30 @@ class ContainerImageCarousel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Image du film
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: movie.posterPath != null
-                      ? Image.network(
-                          'https://image.tmdb.org/t/p/w342${movie.posterPath}',
-                          height: 180,
-                          width: 140,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Container(
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: movie.posterPath != null
+                          ? Image.network(
+                              'https://image.tmdb.org/t/p/w342${movie.posterPath}',
+                              height: 180,
+                              width: 140,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  height: 180,
+                                  width: 140,
+                                  color: Colors.grey[800],
+                                  child: const Icon(
+                                    Icons.movie,
+                                    size: 50,
+                                    color: Colors.white,
+                                  ),
+                                );
+                              },
+                            )
+                          : Container(
                               height: 180,
                               width: 140,
                               color: Colors.grey[800],
@@ -59,19 +73,35 @@ class ContainerImageCarousel extends StatelessWidget {
                                 size: 50,
                                 color: Colors.white,
                               ),
-                            );
-                          },
-                        )
-                      : Container(
-                          height: 180,
-                          width: 140,
-                          color: Colors.grey[800],
-                          child: const Icon(
-                            Icons.movie,
-                            size: 50,
-                            color: Colors.white,
-                          ),
+                            ),
+                    ),
+                    // Note
+                    Positioned(
+                      top: 2,
+                      right: 5,
+                      child: Container(
+                        padding: EdgeInsetsGeometry.symmetric(horizontal: 6),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.8),
+                          borderRadius: BorderRadius.circular(8),
                         ),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                              size: 14,
+                            ),
+                            const SizedBox(width: 2),
+                            Text(
+                              movie.voteAverage.toStringAsFixed(1),
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 6),
                 // Titre du film
@@ -83,17 +113,6 @@ class ContainerImageCarousel extends StatelessWidget {
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
                   ),
-                ),
-                // Note
-                Row(
-                  children: [
-                    const Icon(Icons.star, color: Colors.amber, size: 14),
-                    const SizedBox(width: 2),
-                    Text(
-                      movie.voteAverage.toStringAsFixed(1),
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ],
                 ),
               ],
             ),
