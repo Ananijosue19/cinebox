@@ -3,6 +3,7 @@ import '../../data/models/movie.dart';
 import '../../data/services/api.dart';
 import '../widgets/containerImageCarousel.dart';
 import '../widgets/rowTextIcon.dart';
+import 'detail.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
@@ -154,7 +155,6 @@ class _AccueilState extends State<Accueil> {
                 leading: const Icon(Icons.search),
                 elevation: const WidgetStatePropertyAll(2),
                 onTap: () {
-                  // TODO: Implémenter la recherche
                   print('Recherche clicked');
                 },
               ),
@@ -390,7 +390,12 @@ class _AccueilState extends State<Accueil> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // TODO: Navigation vers la page de détails
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Detail(movie: _latestMovie!),
+                        ),
+                      );
                       print('Voir les détails de ${_latestMovie!.title}');
                     },
                     style: ElevatedButton.styleFrom(
