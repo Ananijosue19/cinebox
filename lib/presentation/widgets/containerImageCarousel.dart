@@ -1,3 +1,4 @@
+import 'package:cinebox/presentation/screens/detail.dart';
 import 'package:flutter/material.dart';
 import '../../data/models/movie.dart';
 
@@ -43,37 +44,47 @@ class ContainerImageCarousel extends StatelessWidget {
                 // Image du film
                 Stack(
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: movie.posterPath != null
-                          ? Image.network(
-                              'https://image.tmdb.org/t/p/w342${movie.posterPath}',
-                              height: 180,
-                              width: 140,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Container(
-                                  height: 180,
-                                  width: 140,
-                                  color: Colors.grey[800],
-                                  child: const Icon(
-                                    Icons.movie,
-                                    size: 50,
-                                    color: Colors.white,
-                                  ),
-                                );
-                              },
-                            )
-                          : Container(
-                              height: 180,
-                              width: 140,
-                              color: Colors.grey[800],
-                              child: const Icon(
-                                Icons.movie,
-                                size: 50,
-                                color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Detail(movie: movie),
+                          ),
+                        );
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: movie.posterPath != null
+                            ? Image.network(
+                                'https://image.tmdb.org/t/p/w342${movie.posterPath}',
+                                height: 180,
+                                width: 140,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    height: 180,
+                                    width: 140,
+                                    color: Colors.grey[800],
+                                    child: const Icon(
+                                      Icons.movie,
+                                      size: 50,
+                                      color: Colors.white,
+                                    ),
+                                  );
+                                },
+                              )
+                            : Container(
+                                height: 180,
+                                width: 140,
+                                color: Colors.grey[800],
+                                child: const Icon(
+                                  Icons.movie,
+                                  size: 50,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
+                      ),
                     ),
                     // Note
                     Positioned(
